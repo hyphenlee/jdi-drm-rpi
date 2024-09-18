@@ -1,5 +1,8 @@
-# jdi-drm-rpi
+# Colored beepy
+This driver is for colored beepy, which is availabel in discord channel: [discord link](https://discord.gg/2uGPpVmCCE)   
+see the announcement channel for details
 
+# jdi-drm-rpi
 support debian 11 32-bit and debian 12 64-bit
 
 ## Install
