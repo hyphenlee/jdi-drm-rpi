@@ -1,6 +1,6 @@
-# jdi-drm-rpi
+# jdi-drm
 
-support debian 11 32-bit and debian 12 64-bit
+support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 64-bit with orange pi zero 2w
 
 ## Install
 
@@ -14,7 +14,7 @@ support debian 11 32-bit and debian 12 64-bit
 * put back.py in place like /home/username/sbin/back.py
 * `chmod +x back.py`
 * `sudo crontab -e`
-* append `@reboot   /path/to/back.py`
+* append `@reboot   sleep 5;/path/to/back.py`
 * if it doesn't work in debian 12 64-bit, reinstall `python3-rpi.gpio`
 
 ### Set dithering level
@@ -48,3 +48,24 @@ alias bn="echo 0 | sudo tee /sys/module/jdi_drm/parameters/backlit"
 alias key='echo "keys" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
 alias mouse='echo "mouse" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
 ```
+
+
+# Orangepi zero 2W
+
+Based on `Orangepizero2w_1.0.2_debian_bookworm_server_linux6.1.31.7z`
+
+unzip file in any location and cd into it.
+
+## install
+
+```bash
+sudo orangepi-add-overlay sharp-drm.dts
+sudo cp sharp-drm.ko /lib/modules/6.1.31-sun50iw9/ # when upgrade, only need copy this file and reboot
+sudo depmod -a
+sudo echo "sharp-drm" >> /etc/modules 
+# make sure only one sharp-drm in /etc/modules
+```
+
+## backlight
+
+build [wiringOP-Python](https://github.com/orangepi-xunlong/wiringOP-Python/tree/next) with next branch, do the same as raspberry pi with `orangepi-back.py`
