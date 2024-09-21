@@ -1,6 +1,13 @@
-# jdi-drm
+# Colored beepy
+
+This driver is for colored beepy, which is availabel in discord channel: [discord link](https://discord.gg/2uGPpVmCCE)
+see the announcement channel for details
+
+# jdi screen driver
 
 support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 64-bit with orange pi zero 2w
+
+# Raspberry PI
 
 ## Install
 
@@ -49,12 +56,11 @@ alias key='echo "keys" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /d
 alias mouse='echo "mouse" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
 ```
 
-
 # Orangepi zero 2W
 
 Based on `Orangepizero2w_1.0.2_debian_bookworm_server_linux6.1.31.7z`
 
-unzip file in any location and cd into it.
+unzip `jdi-drm-orangepi-debian12-64.zip` file in any location and cd into it.
 
 ## install
 
@@ -68,4 +74,62 @@ sudo echo "sharp-drm" >> /etc/modules
 
 ## backlight
 
-build [wiringOP-Python](https://github.com/orangepi-xunlong/wiringOP-Python/tree/next) with next branch, do the same as raspberry pi with `orangepi-back.py`
+build [wiringOP-Python](https://github.com/orangepi-xunlong/wiringOP-Python/tree/next) with "next" branch, do the same as raspberry pi with `orangepi-back.py`
+
+## .zshrc
+
+```bash
+if [ -z "$SSH_CONNECTION" ]; then
+        if [[ "$(tty)" =~ /dev/tty ]] && type fbterm > /dev/null 2>&1; then
+               fbterm
+        elif [ -z "$TMUX" ] && type tmux >/dev/null 2>&1; then
+                fcitx 2>/dev/null &
+                tmux new -As "$(basename $(tty))"
+        fi
+fi
+
+export PROMPT="%c$ "
+
+alias d0="echo 0 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias d3="echo 3 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias d4="echo 4 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias b="echo 1 | sudo tee /sys/module/sharp_drm/parameters/backlit"
+alias bn="echo 0 | sudo tee /sys/module/sharp_drm/parameters/backlit"
+alias key='echo "keys" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
+alias mouse='echo "mouse" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=14'
+```
+
+## .tmux.conf
+
+```bash
+# Status bar
+set -g status-position top
+set -g status-left ""
+set -g status-right "#{ip} #{wifi_ssid} #{wifi_icon}|[#(cat /sys/firmware/beepy/battery_percent)]%H:%M"
+set -g status-interval 10
+set -g window-status-separator ' | '
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'gmoe/tmux-wifi'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+run-shell ~/.tmux/plugins/tmux-plugin-ip/ip.tmux
+run '~/.tmux/plugins/tpm/tpm'
+
+set -g @tmux_wifi_icon_5 "☰"
+set -g @tmux_wifi_icon_4 "☱"
+set -g @tmux_wifi_icon_3 "⚌"
+set -g @tmux_wifi_icon_2 "⚍"
+set -g @tmux_wifi_icon_1 "⚊"
+set -g @tmux_wifi_icon_off ""
+```
+
+## /etc/rc.local
+
+```bash
+echo 0 | sudo tee /sys/module/sharp_drm/parameters/dither
+echo 0 | sudo tee /sys/firmware/beepy/keyboard_backlight > /dev/null
+/usr/local/bin/gpio export 226 in
+/usr/local/bin/gpio edge 226 rising
+echo "key" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null
+echo "always" | sudo tee /sys/module/beepy_kbd/parameters/touch_act > /dev/null
+```
