@@ -133,3 +133,37 @@ echo 0 | sudo tee /sys/firmware/beepy/keyboard_backlight > /dev/null
 echo "key" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null
 echo "always" | sudo tee /sys/module/beepy_kbd/parameters/touch_act > /dev/null
 ```
+
+# xfce
+
+```bash
+sudo apt install task-xfce-desktop
+sudo apt-get install xserver-xorg-legacy
+sudo usermod -a orangepi -G tty
+```
+
+## /etc/X11/Xwrapper.config
+
+```
+	allowed_users=anybody
+	needs_root_rights=yes
+```
+
+## /etc/X11/xorg.conf
+
+```
+
+Section "Device"
+    Identifier "FBDEV"
+    Driver "fbdev"
+    Option "fbdev" "/dev/fb0"
+#    Option "ShadowFB" "false"
+EndSection
+
+Section "ServerFlags"
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+EndSection
+```
