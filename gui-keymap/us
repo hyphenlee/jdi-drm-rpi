@@ -1,0 +1,67 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+    name[Group1]= "English (US)";
+    key <TLDE> {        [     numbersign,       asciitilde      ]       };
+    key <AE01> {        [         1,    exclam          ]       };
+    key <AE02> {        [         2,    at              ]       };
+    key <AE03> {        [         3,    numbersign      ]       };
+    key <AE04> {        [         4,    dollar          ]       };
+    key <AE05> {        [         5,    percent         ]       };
+    key <AE06> {        [         6,    asciicircum     ]       };
+    key <AE07> {        [         7,    ampersand       ]       };
+    key <AE08> {        [         8,    asterisk        ]       };
+    key <AE09> {        [         9,    parenleft       ]       };
+    key <AE10> {        [         0,    parenright      ]       };
+
+    key <AE11>{[parenleft]};
+    key <AE12>{[parenright]};
+    key <AB11>{[underscore]};
+    key <AD12>{[minus]};
+    key <AC10>{[plus]};
+    key <AC11>{[at]};
+    key <INS>{[asterisk]};
+    key <LSGT>{[slash]};
+    key <AB10>{[colon]};
+    key <BKSL>{[semicolon]};
+
+    key <PRSC>{[apostrophe]};
+    key <SCLK>{[quotedbl]};
+
+    key <PAUS>{[question]};
+    key <NMLK>{[exclam]};
+    key <LFSH>{[dollar,F8,F9]};
+    key <AB08>{[comma]};
+    key <AB09>{[period]};
+
+    key <AD01> {        [         q,    Q ,asciitilde           ]       };
+    key <AD02> {        [         w,    W,grave         ]       };
+    key <AD03> {        [         e,    E,braceleft             ]       };
+    key <AD04> {        [         r,    R,braceright            ]       };
+    key <AD05> {        [         t,    T,bracketleft           ]       };
+    key <AD06> {        [         y,    Y,bracketright          ]       };
+    key <AD07> {        [         u,    U,less          ]       };
+    key <AD08> {        [         i,    I,greater               ]       };
+    key <AD09> {        [         o,    O,asciicircum           ]       };
+    key <AD10> {        [         p,    P,percent               ]       };
+
+    key <AC01> {        [         a,    A,equal                 ]       };
+    key <AC02> {        [         s,    S,division              ]       };
+    key <AC03> {        [         d,    D,plusminus             ]       };
+    key <AC04> {        [         f,    F,ampersand             ]       };
+    key <AC05> {        [         g,    G,backslash             ]       };
+    key <AC06> {        [         h,    H,bar           ]       };
+    key <AC07> {        [         j,    J,F10           ]       };
+    key <AC08> {        [         k,    K,F11           ]       };
+    key <AC09> {        [         l,    L,F12           ]       };
+
+    key <AB01> {        [         z,    Z,F1            ]       };
+    key <AB02> {        [         x,    X,F2            ]       };
+    key <AB03> {        [         c,    C,F3            ]       };
+    key <AB04> {        [         v,    V,F4            ]       };
+    key <AB05> {        [         b,    B,F5            ]       };
+    key <AB06> {        [         n,    N,F6            ]       };
+    key <AB07> {        [         m,    M,F7            ]       };
+    key <RALT> {        [        ISO_Level3_Shift               ]       };
+
+  include "level3(ralt_switch)"
+};

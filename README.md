@@ -153,6 +153,7 @@ sudo usermod -a orangepi -G tty
 
 ```
 
+
 Section "Device"
     Identifier "FBDEV"
     Driver "fbdev"
@@ -167,3 +168,26 @@ Section "ServerFlags"
     Option "OffTime" "0"
 EndSection
 ```
+
+# keyboard input under gui
+
+copy file of gui-keymap/ to system file:
+
+```
+/usr/share/X11/xkb/symbols/us
+/usr/share/X11/xkb/keycodes/evdev
+```
+
+map sym z,x,c...m to F1...F7,    
+
+shift - $ = F8
+
+sym - $ = F9
+
+sym - h = F10
+
+sym - j = F11
+
+sym - l = F12
+
+sym - f = &
