@@ -1,6 +1,6 @@
 # ColorBerry
 
-This repo is for jdi screen driver and configure file of ColorBerry, which is availabel on [discord](https://discord.gg/2uGPpVmCCE) and [Elecrow](https://www.elecrow.com/colorberry.html)
+This repo is for jdi screen driver and configure file of ColorBerry, which is available on [discord](https://discord.gg/2uGPpVmCCE) and [Elecrow](https://www.elecrow.com/colorberry.html)
 
 # jdi screen driver
 
