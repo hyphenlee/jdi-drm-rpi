@@ -1,7 +1,6 @@
-# Colored beepy
+# ColorBerry
 
-This driver is for colored beepy, which is availabel in discord channel: [discord link](https://discord.gg/2uGPpVmCCE)
-see the announcement channel for details
+This repo is for jdi screen driver and configure file of ColorBerry, which is availabel on [discord](https://discord.gg/2uGPpVmCCE) and [Elecrow](https://www.elecrow.com/colorberry.html)
 
 # jdi screen driver
 
