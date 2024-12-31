@@ -190,3 +190,5 @@ sym - j = F11
 sym - l = F12
 
 sym - f = &
+
+# [mgba](mgba.md) for playing gba game on ColorBerry
