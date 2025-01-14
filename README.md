@@ -10,6 +10,12 @@ support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 6
 
 ## Install
 
+* remove old jdi-drm
+  ```shell
+  sudo vi /boot/config.txt  
+  sudo vi /etc/modules 
+  sudo rm -f /boot/overlays/jdi-drm.dtbo 
+  ```
 * unzip file to /var/tmp/jdi-drm-rpi
 * cd to /var/tmp/jdi-drm-rpi
 * run `sudo make install`
@@ -177,7 +183,7 @@ copy file of gui-keymap/ to system file:
 /usr/share/X11/xkb/keycodes/evdev
 ```
 
-map sym z,x,c...m to F1...F7,    
+map sym z,x,c...m to F1...F7,
 
 shift - $ = F8
 
