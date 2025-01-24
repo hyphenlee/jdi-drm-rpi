@@ -11,11 +11,14 @@ support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 6
 ## Install
 
 * remove old jdi-drm
+
   ```shell
-  sudo vi /boot/config.txt  
+  sudo vi /boot/config.txt   
+  # /boot/firmware/config.txt for debian 12
   sudo vi /etc/modules 
   sudo rm -f /boot/overlays/jdi-drm.dtbo 
   ```
+* remove old sharp-drm in apt if exist, and other packages depend on it.
 * unzip file to /var/tmp/jdi-drm-rpi
 * cd to /var/tmp/jdi-drm-rpi
 * run `sudo make install`

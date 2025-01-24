@@ -25,11 +25,11 @@ def button_pressed_callback(channel):
         return
     if backlit_on:
         backlit_on=False
-        os.system("echo 0 | sudo tee /sys/module/jdi_drm/parameters/backlit > /dev/null")
+        os.system("echo 0 | sudo tee /sys/module/sharp_drm/parameters/backlit > /dev/null")
         os.system("echo 0 | sudo tee /sys/firmware/beepy/keyboard_backlight > /dev/null")
     else:
         backlit_on=True
-        os.system("echo 1 | sudo tee /sys/module/jdi_drm/parameters/backlit > /dev/null")
+        os.system("echo 1 | sudo tee /sys/module/sharp_drm/parameters/backlit > /dev/null")
         os.system("echo 255 | sudo tee /sys/firmware/beepy/keyboard_backlight > /dev/null")
 
 
