@@ -65,7 +65,7 @@ xkb_symbols "basic" {
 
   include "level3(ralt_switch)"
 };
-~$ sudo cat /usr/share/X11/xkb/keycodes/evdev
+
 // translation from evdev scancodes to something resembling xfree86 keycodes.
 
 default xkb_keycodes "evdev" {
