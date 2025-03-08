@@ -4,12 +4,12 @@ import signal
 import sys
 import subprocess
 import os
-from time import sleep
+from time import sleep, time
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 backlit_on=False
 init_label=False
-last_time=time.time()
+last_time=time()
 def signal_handler(sig, frame):
     GPIO.cleanup()
     print("cleanup")
@@ -18,9 +18,9 @@ def button_pressed_callback(channel):
     global init_label
     global last_time
     global backlit_on
-    if time.time()-last_time<0.2:
+    if time()-last_time<0.2:
         return
-    last_time=time.time()
+    last_time=time()
     if not init_label:
         return
     if backlit_on:
