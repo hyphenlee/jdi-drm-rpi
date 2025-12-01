@@ -10,6 +10,8 @@ support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 6
 
 ## Install
 
+### binary
+
 * remove old jdi-drm
 
   ```shell
@@ -23,6 +25,28 @@ support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 6
 * cd to /var/tmp/jdi-drm-rpi
 * run `sudo make install`
 * reboot
+
+### from source
+
+* orangepi
+
+```shell
+sudo dpkg -i /opt/linux-headers-next-sun50iw9_1.0.0_arm64.deb
+sudo orangepi-add-overlay sharp-drm.dts
+make all
+sudo cp sharp-drm.ko /lib/modules/6.1.31-sun50iw9/
+sudo depmod -a
+echo "sharp-drm" | sudo tee -a /etc/modules
+```
+
+* raspberry pi
+  ```shell
+  sudo apt-get install raspberrypi-kernel-headers
+  make
+  sudo make install
+  ```
+
+
 
 ## Control backlight by side button
 
