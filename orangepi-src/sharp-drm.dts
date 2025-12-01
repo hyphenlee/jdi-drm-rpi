@@ -1,0 +1,55 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			spi1 = "/soc/spi@5011000";
+		};
+	};
+
+	fragment@1 {
+		target = <&spi1>;
+		__overlay__ {
+			status = "okay";
+            pinctrl-names = "default";
+
+			spidev@0 {
+				status = "disabled";
+			};
+			spidev@1{
+				status = "disabled";
+			};
+		};
+	};
+	fragment@2 {
+		target = <&pio>;
+		__overlay__ {
+			sharp_pins: sharp_pins {
+                pins = "PI5","PI14","PI1";
+                function = "gpio_out"; 
+			};
+		};
+	};
+	fragment@3 {
+		target = <&spi1>;
+		__overlay__ {
+			/* needed to avoid dtc warning */
+			#address-cells = <1>;
+			#size-cells = <0>;
+            pinctrl-0 = <&spi1_pins>, <&spi1_cs0_pin>;
+			sharp_drm: sharp_drm@0{
+				compatible = "sharp-drm";
+				reg = <0>;
+                vcom-gpios = <&pio 8 14 0>;
+                disp-gpios = <&pio 8 5 0>;
+				backlit-gpios = <&pio 8 1 0>;
+				spi-cs-high = <1>;
+				spi-max-frequency = <4000000>;
+				buswidth = <8>;
+				debug = <1>;
+			};
+		};
+	};
+};
