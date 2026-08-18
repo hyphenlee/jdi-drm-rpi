@@ -201,8 +201,10 @@ Section "ServerFlags"
 EndSection
 ```
 ## OrangePi zero 2w enable usb0 as host:
+```bash
 sudo orangepi-config
-System->Hardware->usb0-host->Save->Back->Reboot
+```
+	System->Hardware->usb0-host->Save->Back->Reboot
 
 # keyboard input under gui
 
