@@ -1,6 +1,6 @@
 # ColorBerry
 
-This repo is for jdi screen driver and configure file of ColorBerry, which is available on [discord](https://discord.gg/2uGPpVmCCE) and [Elecrow](https://www.elecrow.com/colorberry.html)
+This repo is for jdi screen driver and configure file of ColorBerry, which is available on [discord](https://discord.gg/2uGPpVmCCE)
 
 # jdi screen driver
 
@@ -12,7 +12,7 @@ support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 6
 
 ### binary
 
-* remove old jdi-drm
+* remove old jdi-drm if installed else ignore this step
 
   ```shell
   sudo vi /boot/config.txt   
@@ -79,11 +79,11 @@ export PROMPT="%c$ "
 export PATH=$PATH:~/sbin
 export SDL_VIDEODRIVER="fbcon"
 export SDL_FBDEV="/dev/fb1"
-alias d0="echo 0 | sudo tee /sys/module/jdi_drm/parameters/dither"
-alias d3="echo 3 | sudo tee /sys/module/jdi_drm/parameters/dither"
-alias d4="echo 4 | sudo tee /sys/module/jdi_drm/parameters/dither"
-alias b="echo 1 | sudo tee /sys/module/jdi_drm/parameters/backlit"
-alias bn="echo 0 | sudo tee /sys/module/jdi_drm/parameters/backlit"
+alias d0="echo 0 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias d3="echo 3 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias d4="echo 4 | sudo tee /sys/module/sharp_drm/parameters/dither"
+alias b="echo 1 | sudo tee /sys/module/sharp_drm/parameters/backlit"
+alias bn="echo 0 | sudo tee /sys/module/sharp_drm/parameters/backlit"
 alias key='echo "keys" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
 alias mouse='echo "mouse" | sudo tee /sys/module/beepy_kbd/parameters/touch_as > /dev/null'
 ```
@@ -200,6 +200,9 @@ Section "ServerFlags"
     Option "OffTime" "0"
 EndSection
 ```
+## OrangePi zero 2w enable usb0 as host:
+sudo orangepi-config
+System->Hardware->usb0-host->Save->Back->Reboot
 
 # keyboard input under gui
 
