@@ -38,13 +38,14 @@
 			/* needed to avoid dtc warning */
 			#address-cells = <1>;
 			#size-cells = <0>;
-            pinctrl-0 = <&spi1_pins>, <&spi1_cs0_pin>;
+			pinctrl-0 = <&spi1_pins>, <&spi1_cs0_pin>;
 			sharp_drm: sharp_drm@0{
 				compatible = "sharp-drm";
 				reg = <0>;
                 vcom-gpios = <&pio 8 14 0>;
                 disp-gpios = <&pio 8 5 0>;
 				backlit-gpios = <&pio 8 1 0>;
+				sidebutton-gpios = <&pio 7 2 0>;
 				spi-cs-high = <1>;
 				spi-max-frequency = <4000000>;
 				buswidth = <8>;
