@@ -4,7 +4,7 @@ This repo is for jdi screen driver and configure file of ColorBerry, which is av
 
 # jdi screen driver
 
-support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12 64-bit with orange pi zero 2w
+support debian 11 32-bit and debian 12 64-bit with raspberry pi, and debian 12/13 64-bit with orange pi zero 2w
 
 # Raspberry PI
 
@@ -230,3 +230,4 @@ sym - l = F12
 sym - f = &
 
 # [mgba](mgba.md) for playing gba game on ColorBerry
+# [cmus](cmus/cmus.md) typec wired earphone inline control buttons for cmus
