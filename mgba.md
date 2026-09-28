@@ -1,14 +1,20 @@
 ## build for ColorBerry
 build sdl2 at first, like glowfire
 ```bash
+sudo chmod 644 /usr/local/etc/directfbrc
+sudo chmod 644 /dev/tty0  /dev/tty7
 git clone https://github.com/mgba-emu/mgba.git
 cd mgba && mkdir build
 cd build
 cmake ..
 make -j4
-sudo ./sdl/mgba -f ~/game/Kirby-Mirror.gba
-```
+./sdl/mgba -f ~/game/Kirby-Mirror.gba
 
+# use this command to check permission issue
+strace -f -e trace=open,openat,access ./sdl/mgba -f ~/game/Kirby-Mirror.gba 2>&1 | grep -E "EACCES|EPERM"
+```
+## audio 
+configure ~/.asoundrc to set the default alsa audio device
 ## keymap
 src/platform/sdl/sdl-events.c
 map key to wasd and uijk
