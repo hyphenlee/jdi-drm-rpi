@@ -6,7 +6,7 @@ cd mgba && mkdir build
 cd build
 cmake ..
 make -j4
-sudo ./sdl/mgba-qt -f ~/game/Kirby-Mirror.gba
+sudo ./sdl/mgba -f ~/game/Kirby-Mirror.gba
 ```
 
 ## keymap
